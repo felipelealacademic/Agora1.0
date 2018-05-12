@@ -1,0 +1,45 @@
+
+CREATE TABLE Usuario (
+ID_Usuario SERIAL  PRIMARY KEY,
+Nome VARCHAR(50),
+Email VARCHAR(30),
+Data_nascimento VARCHAR(30),
+CPF VARCHAR(20),
+Login VARCHAR(50),
+Senha VARCHAR(50)
+);
+
+CREATE TABLE Endereço (
+Endereço_PK INTEGER PRIMARY KEY,
+Rua VARCHAR(50),
+Bairro VARCHAR(50),
+Cidade VARCHAR(50),
+Estado VARCHAR(50),
+Pais VARCHAR(50),
+ID_Usuario integer,
+FOREIGN KEY(ID_Usuario) REFERENCES Usuario (ID_Usuario)
+);
+
+
+CREATE TABLE Movimentaçao_Usuario (
+IdMovimentaçao INTEGER PRIMARY KEY,
+Data_Hora DATE,
+IDAudioLivro INTEGER,
+CPF VARCHAR(10),
+ID_Usuario integer,
+FOREIGN KEY(ID_Usuario) REFERENCES Usuario (ID_Usuario),
+FOREIGN KEY(IDAudioLivro) REFERENCES AudioLivro (IDAudioLivro)
+);
+
+CREATE TABLE AudioLivro (
+IDAudioLivro INTEGER PRIMARY KEY,
+Titulo VARCHAR(50),
+Categoria VARCHAR(50),
+Ano DATE,
+Autor VARCHAR(50),
+Editora VARCHAR(50),
+Genero VARCHAR(50),
+tipo VARCHAR(50)
+
+);
+
